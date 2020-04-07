@@ -1,0 +1,28 @@
+****************************************** Vanilla js Things **********************************************
+1) e.target.elements.msg.value -> this is to get the value of the submitted message.
+    . e == submit event
+    . target == the submitted form
+    . elements == children tags
+    . msg == id of the input 
+    . value == to grab the value entered in that input box
+
+2) For Scroll Down as every message is emitted on screen, We use chatMessages.ScrollTop = chatMessages.scrollHeight
+
+3) e.target.elements.msg.value = "";  ==> For clearing the input bo after every click
+  e.target.elements.msg.focus();  ==> TO focus the cursor, after message is cleared, sot that there is no need to click the box again and again
+
+
+
+******************************************** Socket.io *****************************************************
+1) /socket.io/socket.io.js is initialized before main.js, so that "io" object can be accessed in main.js
+
+2) "emit" is a function which "emits" a certain event with some value.
+3) "on" is a function which "grabs" the "emitted event" by its name and perform any operation
+4) "broadcast.emit" emits the message to all the active clients except the user who is source of the message
+5) "broadcast..to("roomName").emit" emits the message to all the active clients on a "particular room" except the user who is source of the message.
+6) "socket.join("roomName")" lets to join user to a particular room
+
+) "socket" is a server for a specific user at a time, so, it emits to only a single user any event like "message" = "welcome himanshu"
+) "io" is a public server, which emits any message over all the active clients like "message" = "Himanshu has joined the Chat"
+
+) "connection" & "disconnect" are keywords for the "when user connects" & "when user Disconnects"
