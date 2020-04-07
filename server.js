@@ -70,6 +70,16 @@ io.on("connection", (socket) => {
   });
 });
 
+//Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  //Set a static folder
+  app.use(express.static("build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  });
+}
+
 const PORT = 3000 || process.env.PORT;
 
 server.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
